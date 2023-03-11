@@ -1,0 +1,9 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item:not last-child {
+  margin-bottom: 20px;
+}
