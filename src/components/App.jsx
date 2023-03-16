@@ -57,8 +57,8 @@ function App() {
       <Filter filter={filter} changeFilter={changeFilter} />
       {contacts.length > 0 ? (
         <ContactList
-          contacts={filtredContacts}
-          onDeleteContact={deleteContact()}
+          contacts={filtredContacts()}
+          onDeleteContact={deleteContact}
         />
       ) : (
         <Message text="Contact list is empty." />
