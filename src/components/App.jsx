@@ -22,15 +22,15 @@ function App() {
   }, [contacts]);
 
   const addContact = ({ name, number }) => {
-    const newContact = { id: nanoid(), name, number };
-    contacts.some(contact => contact.name === name)
-      ? Report.warning(
-          `${name}`,
-          'This user is already in the contact list.',
-          'OK'
-        )
-      : setContacts(prevContacts => [newContact, ...prevContacts]);
+    if (contacts.some(contact => contact.name === name)) {
+      return Report.warning(`${name} is already in contacts!`);
+    }
+
+    const contact = { id: nanoid(), name, number };
+
+    setContacts(prevContacts => [contact, ...prevContacts]);
   };
+
   const deleteContact = contactId => {
     setContacts(prevContacts =>
       prevContacts.filter(contact => contact.id !== contactId)
